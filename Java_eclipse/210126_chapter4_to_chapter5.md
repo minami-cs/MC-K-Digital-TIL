@@ -1,4 +1,4 @@
-![](C:%5CUsers%5CUser%5CDesktop%5CTIL%5Cmd-img%5C%EC%A0%9C%EB%AA%A9%EC%9D%84%20%EC%9E%85%EB%A0%A5%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94._001.png)
+![](../md-img/%EC%A0%9C%EB%AA%A9%EC%9D%84%20%EC%9E%85%EB%A0%A5%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94._001-1612425403308.png)
 
 # 💡 자바의 제어문
 자바의 제어문은 조건문과 반복문으로, 2종류이다.
