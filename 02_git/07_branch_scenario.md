@@ -279,8 +279,8 @@
     ```bash
     $ git add .
     $ git commit -m 'Fix merge conflict'
-[master cfbbd0f] Fix merge conflict
-   ```
+	[master cfbbd0f] Fix merge conflict
+    ```
    
    * vim 편집기 화면이 나타납니다.
    
