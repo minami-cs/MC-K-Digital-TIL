@@ -62,7 +62,7 @@
    Deleted branch feature/main (was c3aa742).
    ```
    
-   ![ff](../TIL/md-img/ff.jpg)
+   ![ff](../md-img//ff.jpg)
    
    
 
@@ -135,7 +135,7 @@
 
 6. 결과 -> 자동으로 *merge commit 발생*
 
-   ![image-20210205142527223](../TIL/md-img/image-20210205142527223.png)
+   ![image-20210205142527223](../md-img//image-20210205142527223.png)
 
    * vim 편집기 화면이 나타납니다.
 
@@ -166,7 +166,7 @@
    Deleted branch feature/signout (was e018c79).
    ```
 
-   ![mc](../TIL/md-img/mc.jpg)
+   ![mc](../md-img//mc.jpg)
 
 ---
 
@@ -317,5 +317,5 @@
     Deleted branch feature/board (was 736d589).
     ```
     
-    ![mccc](../TIL/md-img/mccc.jpg)
+    ![mccc](../md-img//mccc.jpg)
 

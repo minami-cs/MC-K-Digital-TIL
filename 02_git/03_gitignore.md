@@ -11,6 +11,6 @@ secret/  # 특정 폴더
 
   * 처음에는 http://gitignore.io/ 혹은 https://github.com/github/gitignore 에서 원하는 내용을 입력해서 나온 결과를 활용하자.
 
-    ![image-20210205094934017](C:%5CUsers%5CUser%5CDesktop%5CTIL%5Cmd-img%5Cimage-20210205094934017.png)
+    ![image-20210205094934017](../md-img/image-20210205094934017.png)
 
   * 여기에 본인이 희망하는 파일을 추가하면 된다.  ~~(왜 일본어로 나오는지는 모르겠으니 무시하도록 하자...)~~

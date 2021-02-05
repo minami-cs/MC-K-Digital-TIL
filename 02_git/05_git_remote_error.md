@@ -60,7 +60,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   
   * 병합 커밋 발생
   
-    ![image-20210205111319494](C:%5CUsers%5CUser%5CDesktop%5CTIL%5Cmd-img%5Cimage-20210205111319494.png)
+    ![image-20210205111319494](../md-img/image-20210205111319494.png)
   
   * push
   
