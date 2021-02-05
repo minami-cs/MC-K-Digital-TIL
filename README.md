@@ -23,9 +23,9 @@
 * [git기초](02_git/01_git.md)
 * [원격 저장소 기초 활용](02_git/02_remote.md)
 * [gitignore](02_git/03_gitignore.md)
-* [git status](02_git/04_git status.md)
-* [git remote error](02_git/05_git remote error.md)
+* [git status](02_git/04_git_status.md)
+* [git remote error](02_git/05_git_remote_error.md)
 * [branch 활용 명령어](02_git/06_branch.md)
-* [branch 활용 예시](02_git/07_branch scenario.md)
+* [branch 활용 예시](02_git/07_branch_scenario.md)
 * [git add와 commit 취소방법](02_git/08_Undoing.md)
 
