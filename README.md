@@ -21,6 +21,6 @@
 #### 2-1. git특강
 
 * [git기초](02_git/01_git.md)
-
 * [원격 저장소 기초 활용](02_git/02_remote.md)
+* [gitignore](02_git/03_gitignore.md)
 
