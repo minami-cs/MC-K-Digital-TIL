@@ -405,7 +405,7 @@ public void createAccount() {
 
 계좌번호를 받기 위한 `sc.next()`가 실행되었을 때 마지막에 친 엔터값(`\n`)이 자동으로 `nextLine()`으로 들어가서 이름을 입력받지 않았는데 초기입금액으로 바로 넘어가는 문제 발생.
 
-## ⚠ 문제 1 해결과 문제2
+## ⚠ 문제1 해결과 문제2
 
 ```java
 Scanner sc = new Scanner(System.in);
