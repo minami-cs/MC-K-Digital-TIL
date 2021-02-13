@@ -485,25 +485,26 @@ public void createAccount() {
 }
 
 public void createSpecialAccount() {
-		System.out.println("---------");
-		System.out.println("특수계좌생성");
-		System.out.println("---------");
-		System.out.print("계좌번호: ");
-		String id = sc.nextLine();
-		System.out.print("이름: ");
-		String owner = sc.nextLine();
-		System.out.print("초기입금액: ");
-		int balance = Integer.parseInt(sc.nextLine());
-		System.out.println("등급\nVIP: 1, Gold: 2, Silver: 3, Normal: 4\n선택: ");
-		int ngrade = Integer.parseInt(sc.nextLine());
-		String grade = "Normal";
-		switch(ngrade) {
-		case 1: grade = "VIP"; break;
-		case 2: grade = "Gold"; break;
-		case 3: grade = "Silver"; break;
-		case 4: grade = "Normal"; break;
-		}
+	System.out.println("---------");
+	System.out.println("특수계좌생성");
+	System.out.println("---------");
+	System.out.print("계좌번호: ");
+	String id = sc.nextLine();
+	System.out.print("이름: ");
+	String owner = sc.nextLine();
+	System.out.print("초기입금액: ");
+	int balance = Integer.parseInt(sc.nextLine());
+	System.out.println("등급\nVIP: 1, Gold: 2, Silver: 3, Normal: 4\n선택: ");
+	int ngrade = Integer.parseInt(sc.nextLine());
+	String grade = "Normal";
+	switch(ngrade) {
+	case 1: grade = "VIP"; break;
+	case 2: grade = "Gold"; break;
+	case 3: grade = "Silver"; break;
+	case 4: grade = "Normal"; break;
+	}
 }
 ```
 
 `balance`의 값도 `nextLine()`으로 받아서 받은 값을 정수로 반환해주는 `Integer.parseInt()`를 사용하여 최종적으로 문제 해결
+
