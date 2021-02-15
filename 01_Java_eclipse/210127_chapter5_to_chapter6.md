@@ -97,7 +97,7 @@ public class MainArgsExample {
     
 4. 콘솔창으로 결과 확인하기
 
-     ![](../md-img/image (2).png)
+     ![](../md-img/image(2).png)
 
 ### 5-3. 다차원 배열
 - 자바는 1차원 배열을 이용하여 수학의 행렬과 같은 방식으로 2차원 배열을 구현할 수 있다.
