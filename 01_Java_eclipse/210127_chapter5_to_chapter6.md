@@ -89,11 +89,11 @@ public class MainArgsExample {
 }
 ```
 2. Run Configuration 창 열기
-![](C:%5CUsers%5CUser%5CDesktop%5CTIL%5Cmd-img%5Cimage-1612425853811.png)
+![](../md-img/image-1612425853811.png)
 3. Arguments탭의 Program arguments에 연산식 입력하고 Run 버튼 누르기
-![](C:%5CUsers%5CUser%5CDesktop%5CTIL%5Cmd-img%5Cimage%20(1)-1612425871235.png)
+![](../md-img/image%20(1)-1612425871235.png)
 4. 콘솔창으로 결과 확인하기
-![](C:%5CUsers%5CUser%5CDesktop%5CTIL%5Cmd-img%5Cimage%20(2).png)
+![](../md-img/image%20(2).png)
 
 ### 5-3. 다차원 배열
 - 자바는 1차원 배열을 이용하여 수학의 행렬과 같은 방식으로 2차원 배열을 구현할 수 있다.
