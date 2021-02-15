@@ -93,7 +93,7 @@ public class MainArgsExample {
 
 3. Arguments탭의 Program arguments에 연산식 입력하고 Run 버튼 누르기
     
-![](../md-img/image (1)-1612425871235.png)
+![](../md-img/image(1)-1612425871235.png)
     
 4. 콘솔창으로 결과 확인하기
 
