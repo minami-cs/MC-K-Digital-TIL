@@ -385,3 +385,4 @@ public class AnonymousTest {
 * 실행 예외(Runtime Execption)
   * 컴파일 과정에서 예외 처리 코드를 검사하지 않는 예외
   * `NullPointerException`과 `ArrayIndexOutOfBoundsException` 등이 속한다.
+
