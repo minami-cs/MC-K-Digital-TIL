@@ -17,7 +17,7 @@
 | [2021-01-27](01_Java_eclipse/210127_chapter5_to_chapter6.md) | Chapter 5. 참조 타입<br />Chapter 6. 클래스                  | String 타입, 배열 타입, 열거 타입<br />자바의 클래스와 객체 개념 |
 | [2021-01-28](01_Java_eclipse/210128_chapter6_to_chapter7.md) | Chapter 6. 클래스<br />Chapter 7. 상속                       | 접근 제한자, 어노테이션, 확인문제 풀이<br />클래스 상속의 개념, 타입 변환, 다형성 |
 | [2021-01-29](01_Java_eclipse/210129_chapter7_to_chapter10.md) | Chapter 7. 상속<br />Chapter 8. 인터페이스<br />Chapter 9. 중첩 클래스와 중첩 인터페이스<br />Chapter 10. 예외 처리 | 추상 클래스<br />인터페이스<br />중첩 클래스와 중첩 인터페이스<br />예외 처리의 개념 |
-|        [2021-02-01](210201_chapter10_to_chapter12.md)        | Chapter 9. 중첩 클래스와 중첩 인터페이스<br />Chapter 10. 예외 처리<br />Chapter 12. 멀티 스레드 | 확인 문제 풀이<br />예외 처리, 확인 문제 풀이<br />멀티 스레드, 스레드 동기화 |
+| [2021-02-01](01_Java_eclipse/210201_chapter10_to_chapter12.md) | Chapter 9. 중첩 클래스와 중첩 인터페이스<br />Chapter 10. 예외 처리<br />Chapter 12. 멀티 스레드 | 확인 문제 풀이<br />예외 처리, 확인 문제 풀이<br />멀티 스레드, 스레드 동기화 |
 
 ### 2. 특강 ✨
 
