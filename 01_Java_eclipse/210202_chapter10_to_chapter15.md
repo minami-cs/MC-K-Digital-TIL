@@ -267,3 +267,171 @@ public class DaemonExample {
 - Map: key-value 한 쌍으로 저장하며 key는 중복 저장 불가능 (HashMap, Hashtable, TreeMap, Properties)
 
 ## 2. List 컬렉션
+
+### 📌 특징
+
+1. 객체를 인덱스로 관리한다.
+2. 동일한 객체를 중복 저장 가능하며, 이때에는 동일한 번지를 참조한다.
+3. null값도 저장이 가능하다.
+4. List 인터페이스는 제네릭 타입이다 - 파라미터: `<E>`
+
+### List 인터페이스의 구현 클래스
+
+* ArrayList, Vector, LinkedList
+  * 객체 추가: `add()`
+  * 객체 찾기: `get()`
+  * 객체 삭제: `remove()`
+
+### 1️⃣ ArrayList
+
+> **📌 배열과 달리 저장 용량을 초과한 객체가 들어오면 저장 용량이 자동으로 늘어난다!!**
+
+- 기본 생성자로 생성 시 초기 용량은 10
+- 객체를 추가하면 0부터 차례대로 저장
+- 특정 인덱스의 객체를 제거하면 바로 뒤 인덱스부터 마지막 인덱스까지 모두 앞으로 1씩 당겨진다.
+- 객체를 삽입하면 해당 인덱스부터 마지막 인덱스까지 모두 1씩 밀려난다.
+- 객체 제거 및 삽입을 자주 할 때에는 **LinkedList**를 사용하는 편이 성능면에서 더 낫다.
+- 인덱스 검색 및 맨 마지막에 객체 추가 시 **ArrayList** 사용
+
+```java
+// ArrayList 사용 예시
+import java.util.ArrayList;
+
+public class ArrayListExample {
+	public static void main(String[] args) {
+		ArrayList<String> list = new ArrayList<String>();  // 2. generic을 사용한다. <String> 제네릭을 사용하면 배열의 타입도 String이 된다.
+		list.add("hong");
+		list.add("gil");
+		list.add("dong");
+		//String str = list.get(0);  // 1. 매번 casting을 해줘야 해서
+//		for(int i=0; i<list.size(); i++) {
+//			System.out.println(list.get(i));
+//		}
+		//System.out.println(str);
+		
+		// 향상된 for문 사용에 최적화되어 있음
+		for( String name : list ) {
+			System.out.println(name);
+		}
+		list.remove(0);
+		System.out.println();
+		for(String name : list) {
+			System.out.println(name);
+		}		
+		list.remove("dong");
+		System.out.println();
+		for(String name : list) {
+			System.out.println(name);
+		}
+	}
+}
+```
+
+### 2️⃣ Vector
+
+- `ArrayList`와 동일한 구조
+
+> 📌 차이점: 동기화된 메소드로 구성되어 있어서 멀티 스레드 환경에서 안전하게 객체를 추가, 삭제 가능!
+>
+> ​				   **➡ 스레드가 안전하다**
+
+```java
+public class Korean {
+	String juminNo;
+	String name;
+	String addr;
+	public Korean(String juminNo, String name, String addr) {}
+}
+```
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListObjExample {
+	public static void main(String[] args) {
+		List<Korean> kors = new ArrayList<Korean>();
+		Korean k = new Korean("121212", "park", "seoul");
+		kors.add(k);
+		kors.add(new Korean("131313", "lee", "incheon"));
+		kors.add(new Korean("141414", "song", "busan"));
+		kors.add(new Korean("121212", "park", "seoul"));
+		kors.remove(k);
+	}
+
+}
+```
+
+### 3️⃣ LinkedList
+
+> **📌 인접 참조를 링크해서 체인처럼 관리**
+
+```java
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class LinkedListExample {
+	public static void main(String[] args) {
+		List<String> list1 = new ArrayList<String>();
+		List<String> list2 = new LinkedList<String>();
+		
+		long startTime;
+		long endTime;
+		startTime = System.nanoTime();
+        
+		for(int i=0; i<10000; i++) {
+			list1.add(0, String.valueOf(i));
+		}
+		endTime = System.nanoTime();
+		System.out.println("ArrayList 걸린 시간: " + (endTime-startTime) + " ns");
+		
+		startTime = System.nanoTime();
+		for(int i=0; i<10000; i++) {
+			list2.add(0, String.valueOf(i));
+		}
+		endTime = System.nanoTime();
+		System.out.println("LinkedList 걸린 시간: " + (endTime-startTime) + " ns");
+		
+		startTime = System.nanoTime();
+		list1.get(list1.size()-1);
+		endTime = System.nanoTime();
+		System.out.println("ArrayList 걸린 시간: " + (endTime-startTime) + " ns");
+		
+		startTime = System.nanoTime();
+		list2.get(list2.size()-1);
+		endTime = System.nanoTime();
+		System.out.println("LinkedList 걸린 시간: " + (endTime-startTime) + " ns");
+	}
+}
+
+// RESULT!
+//ArrayList 걸린 시간: 14641500 ns
+//LinkedList 걸린 시간: 6516200 ns
+//ArrayList 걸린 시간: 135100 ns
+//LinkedList 걸린 시간: 36800 ns
+```
+
+- 특정 인덱스에서 객체를 제거하거나 추가하면 해당 객체 앞뒤 링크만 변경되므로 객체 삭제 또는 삽입이 자주 발생할 경우에는 `ArrayList`보다 좋은 성능 발휘
+
+## 3. Set 컬렉션
+
+### 📌 특징
+
+1. 수학의 집합처럼 저장 순서가 유지되지 않으며 객체 중복 저장 불가능
+2. 하나의 null만 저장 가능
+3. Set 인터페이스는 제네릭 타입
+4. 인덱스로 객체를 검색해서 가져오는 메소드 없음🙅‍♀️!!
+5. 전체 객체를 대상으로 한 번씩 반복해서 가져오는 반복자(`iterator()`메소드)를 제공!
+
+### Set 인터페이스의 구현 클래스
+
+- HashSet, LinkedHashSet, TreeSet
+  - 객체 추가: `add()`
+  - 객체 삭제: `remove()`
+
+### Iterator 인터페이스
+
+- `hasNext()`: 가져올 객체가 있으면 `true`, 없으면 `false` 반환
+- `next()`: `hasNext()`에서 `true`가 반환됐을 때 사용
+- 하지만 향상된 for문을 사용해서 전체 객체를 대상으로 반복 가능!
