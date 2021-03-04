@@ -435,3 +435,202 @@ public class LinkedListExample {
 - `hasNext()`: 가져올 객체가 있으면 `true`, 없으면 `false` 반환
 - `next()`: `hasNext()`에서 `true`가 반환됐을 때 사용
 - 하지만 향상된 for문을 사용해서 전체 객체를 대상으로 반복 가능!
+
+### 1️⃣ HashSet
+
+- 객체들을 순서 없이 저장하고 동일한 객체 및 동등한 객체 중복 저장🙅‍♀️
+- 동등 객체 판단 방법은 `hashCode()`와 `equals()`의 리턴값으로 판별
+
+```java
+public class Member {
+	public String name;
+	public int age;	
+	public Member(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	// 같은 데이터 값이 중복으로 들어가는 것을 판별해 주는 코드
+	public boolean equals(Object obj) {
+		if(obj instanceof Member) {
+			Member member = (Member) obj;
+			return member.name.equals(name) && (member.age==age) ;
+		} else {
+			return false;
+		}
+	}
+	public int hashCode() {
+		return name.hashCode() + age;
+	}
+}
+```
+
+```java
+import java.util.HashSet;
+
+public class HashSetExample2 {
+	public static void main(String[] args) {
+		HashSet<Member> mems = new HashSet<Member>();
+		
+		Member mem1 = new Member("hong", 20);
+		Member mem2 = new Member("hong", 20);
+		Member mem3 = new Member("hong", 30);
+		Member mem4 = new Member("park", 20);
+		
+		mems.add(mem1);
+		mems.add(mem2);
+		mems.add(mem3);
+		mems.add(mem4);
+		
+		for(Member m : mems) {
+			System.out.println(m.name);
+		}
+	}
+}
+```
+
+### 2️⃣ TreeSet
+
+- 출력 시 데이터를 정렬해서 순서대로 출력
+
+```java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+	public static void main(String[] args) {
+		TreeSet<Integer> ts = new TreeSet<Integer>();  // Integer는 int(기본변수)를 클래스화 시켜주는(boxing) 레퍼런스 클래스
+		ts.add(10);
+		ts.add(5);
+		ts.add(7);
+		ts.add(20);
+		
+		// 정렬되어서 순서대로 출력해줌
+		for(int n : ts) {
+			System.out.println(n);
+		}
+	}
+}
+```
+
+## 4. Map 컬렉션
+
+### 📌 특징
+
+1. 키(key)와 값(value)으로 구성된 Entry 객체를 저장하는 구조
+2. 키와 값 모두 객체
+3. 하나의 키에 여러 개의 값 중복 저장 가능
+
+### Map 인터페이스의 구현 클래스
+
+- HashMap, Hashtable, LinkedHashMap, Properties, TreeMap 등
+  - 객체 추가: `put()`
+  - 객체 찾기: `get()`
+  - 객체 삭제: `remove()`
+- 저장된 모든 객체를 대상으로 객체 찾는 방법
+  	1. `keySet()` 메소드로 전체 키를 Set 컬렉션으로 얻음 ➡ 반복자(`Iterator`)를 사용해 키를 하나씩 얻음 ➡ `get()` 메소드로 값을 얻음
+   	2. `entrySet()` 메소드로 모든 Map.Entry를 Set 컬렉션으로 얻음 ➡ 반복자를 통해 Map.Entry를 하나씩 얻음 ➡ `getKey()`와 `getValue()` 메소드로 키와 값을 얻음
+
+### 1️⃣ HashMap
+
+- 키로 사용할 객체는 `hashCode()`와 `equals()` 메소드를 재정의해서 동등 객체 조건을 지정해야 한다.
+- 키 타입은 주로 String을 많이 사용
+- 키와 값의 타입은 클래스 및 인터페이스 타입만 가능
+- 최근에는 Hashtable보다 더 많이 사용한다.
+
+```java
+public class HashMapExample {
+
+	public static void main(String[] args) {
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+		//Map<Integer, String> map = Collections.synchronizedMap(hm);  // 수동으로 동기화
+		hm.put(100, "hong");
+		hm.put(101, "park");
+		hm.put(103, "choi");
+		
+		System.out.println(hm.get(103));
+		Set<Integer> kset = hm.keySet();  // keySet(): key를 set객체에 담아서 리턴
+		for(int k : kset) {
+			System.out.println(k);
+		}
+		
+		Set<Map.Entry<Integer, String>> eset = hm.entrySet();
+		Iterator<Map.Entry<Integer, String>> sit = eset.iterator();
+		while(sit.hasNext()) {
+			Map.Entry<Integer, String> entry = sit.next();
+			Integer key = entry.getKey();  // key값 가져오기
+			String value = entry.getValue();  // value값 가져오기
+			System.out.println(key + ":" + value);
+		}
+		System.out.println();
+		
+		// 실제로 많이 쓰이는 것은 key에서 value를 찾아내는 것
+		for (String value : hm.values()) {
+			System.out.println(value);
+		}
+	}
+}
+```
+
+### 2️⃣ Hashtable
+
+- HashMap과 같은 점
+  - 키로 사용할 객체는 `hashCode()`와 `equals()` 메소드를 재정의해서 동등 객체 조건을 지정해야 한다.
+- HashMap과 다른 점
+  - 동기화된(`synchronized`) 메소드로 구성되어 있어서 **멀티 스레드 환경에서 안전**하다
+
+### 3️⃣ Properties
+
+- Hashtable의 하위 클래스
+- Hashtable과의 차이점은 키와 값이 String 타입으로 제한되어 있다.
+- 프로퍼티 파일(.properties)을 읽을 때 주로 사용
+- 프로퍼티 파일을 읽는 방법
+  1. Properties 객체 생성
+  2. `load()` 메소드 호출
+     - `load()` 메소드는 `FileReader` 객체를 매개값으로 받는다.
+
+```java
+public class PropertiesExample {
+	public static void main(String[] args) throws IOException {
+		Properties prop = new Properties();
+		prop.setProperty("driver", "oracle.jdbc.OracleDriver");
+		prop.setProperty("url", "jdbc:oracle:thin:@localhost:1521:xe");
+		prop.setProperty("username", "hr");
+		prop.setProperty("password", "hr");		
+	}
+}
+```
+
+```properties
+#database set
+#Tue Feb 02 17:24:34 KST 2021
+password=hr
+driver=oracle.jdbc.OracleDriver
+url=jdbc:oracle:thin:@localhost:1521:xe
+username=hr
+```
+
+```java
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
+public class PropertiesExample2 {
+	public static void main(String[] args) throws IOException {
+		Properties prop = new Properties();
+		prop.load(new FileReader("db.properties"));
+		
+		String driver = prop.getProperty("driver");
+		String url = prop.getProperty("url");
+		String username = prop.getProperty("username");
+		String password = prop.getProperty("password");
+		
+		System.out.println("driver: " + driver);
+		System.out.println("url: " + url);
+		System.out.println("username: " + username);
+		System.out.println("password: " + password);
+	}
+}
+```
+
+
+
