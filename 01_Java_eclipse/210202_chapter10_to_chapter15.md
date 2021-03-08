@@ -643,6 +643,7 @@ public class PropertiesExample2 {
 - 부모 노드의 값보다 작은 노드는 부모 노드의 왼쪽, 부모 노드의 값보다 큰 노드는 부모 노드의 오른쪽에 위치
 - 루트 노드: 첫 번째로 저장되는 값
 - 문자를 저장할 경우에는 문자의 유니코드 값을 비교한다.
+- 값이 정렬되어 있어서 그룹핑이 쉽고, 검색 속도가 빠르다!
 
 ### 1️⃣ TreeSet
 
@@ -734,3 +735,4 @@ public class TreeMapExample1 {
 
 - ArrayList, HashSet, HashMap은 동기화된 메소드로 구성되어 있지 않아서 멀티 스레드 환경에서 안전🙅‍♀️
 - `synchronizedXXX()`: 비동기화된 메소드를 동기화된 메소드로 래핑하는 Collections의 메소드
+
