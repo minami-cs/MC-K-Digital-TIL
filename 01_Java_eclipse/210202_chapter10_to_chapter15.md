@@ -634,3 +634,103 @@ public class PropertiesExample2 {
 
 
 
+## 5. 검색 기능을 강화시킨 컬렉션
+
+### 📌 특징
+
+- 이진 트리(binary tree) 구조를 이용해서 계층적인 구조를 갖는 컬렉션이다.
+- 각 노드 당 최대 1개의 노드를 연결할 수 있으며, 위아래로 연결된 두 노드를 부모-자식 관계라고 부른다.
+- 부모 노드의 값보다 작은 노드는 부모 노드의 왼쪽, 부모 노드의 값보다 큰 노드는 부모 노드의 오른쪽에 위치
+- 루트 노드: 첫 번째로 저장되는 값
+- 문자를 저장할 경우에는 문자의 유니코드 값을 비교한다.
+
+### 1️⃣ TreeSet
+
+- 이진 트리 기반의 Set 컬렉션
+- 노드 구성 요소
+  - value: 노드의 값
+  - 변수1: 부모 노드 값보다 낮은 값을 가진 왼쪽 자식 노드를 참조하는 변수
+  - 변수2: 부모 노드 값보다 높은 값을 가진 오른쪽 자식 노드를 참조하는 변수
+- 값을 정렬해서 출력할 때 사용하는 메소드
+  - `descendingKeySet()`: 내림차순으로 정렬된 키의 `NavigableSet`객체 리턴
+
+```java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+	public static void main(String[] args) {
+		TreeSet<Integer> ts = new TreeSet<Integer>();  // Integer는 int(기본변수)를 클래스화 시켜주는(boxing) 레퍼런스 클래스
+		ts.add(10);
+		ts.add(5);
+		ts.add(7);
+		ts.add(20);
+		// 정렬되어서 순서대로 출력해줌
+		for(int n : ts) {
+			System.out.println(n);
+		}
+	}
+}
+```
+
+### 2️⃣ TreeMap
+
+- 이진 트리 기반의 Map 컬렉션
+- TreeSet과 다른 점
+  - 키와 값이 저장된 `Map.Entry`를 저장
+- 부모의 키값보다 낮은 것은 왼쪽 자식 노드, 부모의 키값보다 높은 것은 오른쪽 자식 노드에 자동 정렬
+- 값을 정렬해서 출력할 때 사용하는 메소드
+  - `descendingKeyMap()` : 내림차순으로 정렬된 `NavigableMap`의 객체 리턴
+
+```java
+// 특정 Map.Entry를 찾는 예제와 정렬 메소드 사용 예제
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class TreeMapExample1 {
+	public static void main(String[] args) {
+		TreeMap<Integer,String> scores = new TreeMap<Integer,String>();
+		scores.put(new Integer(87), "홍길동");
+		scores.put(new Integer(98), "이동수");
+		scores.put(new Integer(75), "박길순");
+		scores.put(new Integer(95), "신용권");
+		scores.put(new Integer(80), "김자바");
+		
+//		Map.Entry<Integer, String> entry = null;
+//		
+//		entry = scores.firstEntry();
+//		System.out.println("가장 낮은 점수: " + entry.getKey() + "-" + entry.getValue());
+//		
+//		entry = scores.lastEntry();
+//		System.out.println("가장 높은 점수: " + entry.getKey() + "-" + entry.getValue() + "\n");
+//		
+//		entry = scores.lowerEntry(new Integer(95));
+//		System.out.println("95점 아래 점수: " + entry.getKey() + "-" + entry.getValue());
+//		
+//		entry = scores.higherEntry(new Integer(95));
+//		System.out.println("95점 위의 점수: " + entry.getKey() + "-" + entry.getValue() + "\n");
+//		
+//		entry = scores.floorEntry(new Integer(95));
+//		System.out.println("95점 이거나 바로 아래 점수: " + entry.getKey() + "-" + entry.getValue());
+//		
+//		entry = scores.ceilingEntry(new Integer(85));
+//		System.out.println("85점 이거나 바로 위의 점수: " + entry.getKey() + "-" + entry.getValue() + "\n");
+//		
+//		while(!scores.isEmpty()) {
+//			entry = scores.pollFirstEntry();
+//			System.out.println(entry.getKey() + "-" + entry.getValue() + "(남은 객체 수: " + scores.size() + ")");
+//		}
+		
+		NavigableMap<Integer,String> dscores = scores.descendingMap();
+		for(Integer k : dscores.keySet()) {
+			System.out.println("key: " + k + ", value: " + dscores.get(k));
+		}
+	}
+}
+```
+
+## 6. 동기화된 컬렉션
+
+### 📌 특징
+
+- ArrayList, HashSet, HashMap은 동기화된 메소드로 구성되어 있지 않아서 멀티 스레드 환경에서 안전🙅‍♀️
+- `synchronizedXXX()`: 비동기화된 메소드를 동기화된 메소드로 래핑하는 Collections의 메소드
