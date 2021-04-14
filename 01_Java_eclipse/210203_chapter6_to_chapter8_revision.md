@@ -168,3 +168,248 @@ class Time {
 
 **📌 모든 클래스에는 반드시 하나 이상의 생성자가 있어야 한다!**
 
+### 3-2. 매개변수가 있는 생성자
+
+- 매개변수가 있는 생성자는 간략하게 쓴다.
+
+  ```java
+  Car c = new Car("white", "auto", 4);
+  ```
+
+### 3-3. 생성자에서 다른 생성자 호출하기: this()
+
+- `this()`: 생성자와 같은 클래스의 다른 생성자를 호출할 때 사용
+
+  - 특징: 다른 생성자 호출은 생성자의 첫 문장에서만 가능하며, 부모 생성자인 `super()`도 마찬가지이다.
+
+  ```java
+  class Car {
+      String color;
+      String gearType;
+      int door;
+      
+      //코드의 재사용성을 높인 코드
+      Car() {
+          door = 5;
+          this("white", "auto", 4);
+      }
+  ```
+
+### 3-4. 참조변수 this
+
+- `this`: 인스턴스 자신을 가리키는 참조변수
+
+  - 특징
+    - 인스턴스의 주소가 저장되어 있고, 모든 인스턴스 메소드에 지역변수로 숨겨진 채 존재한다.
+    - 가장 가까운 지역메소드의 지역변수를 참조한다.
+
+  ```java
+  //인스턴스변수와 지역변수를 구별하기 위해 참조변수 this사용
+  Car(String color, String gearType, int door) {
+      this.color = color;
+      this.gearType = gearType;
+      this.door = door;
+  }
+  ```
+
+### 3-4. 생성자를 이용한 인스턴스의 복사
+
+- 인스턴스간의 차이는 인스턴스 변수의 값뿐이고 나머지는 동일하다.
+- 생성자에서 참조변수를 매개변수로 받아서 인스턴스변수들 값을 복사한다.
+- 똑같은 속성값을 갖는 독립적인 인스턴스가 하나 더 만들어진다.
+
+## 4. 변수의 초기화
+
+> 변수를 선언하고 처음으로 값을 저장하는 것을 의미한다.
+
+- 자바의 변수 종류 3가지
+  1. 지역변수
+  2. static 변수
+  3. 인스턴스변수
+
+### 4-1. 특징
+
+- 멤버변수(인스턴스변수, 클래스변수)와 배열은 각 타입의 기본값으로 자동초기화되므로 초기화 생략 가능!
+- 타입이 다른 변수는 함께 선언하거나 초기화🙅‍♀️
+- 타입이 같은 변수는 콤마를 사용해서 함께 선언하거나 초기화🙆‍♀️
+
+### 4-2. 멤버변수의 초기화 방법
+
+#### 1. 명시적 초기화
+```java
+class Car {
+	int door = 4;		//기본형 변수의 초기화
+	Engine e = new Engin();	//참조형 변수의 초기화
+}
+```
+#### 2. 생성자
+```java
+Car(String color, String gearType, int door) {
+    this.color = color;
+    this.gearType = gearType;
+    this.door = door;
+}
+```
+#### 3. 초기화 블럭
+
+- 인스턴스 초기화 블럭: `{}`
+  - 생성자에서 공통적으로 수행되는 작업에 사용되며 인스턴스가 생성될 때마다 생성자보다 먼저 실행
+- 클래스 초기화 블럭: `static {}`
+  - 클래스변수의 복잡한 초기화에 사용되며 클래스가 로딩될 때 실행
+
+### 4-3. 멤버변수의 초기화 시기와 순서
+
+- 클래스변수 초기화 시점: 클래스가 처음 로딩될 때 단 한 번
+- 인스턴스변수 초기화 시점: 인스턴스가 생성될 때 마다
+
+```java
+// 유일한 값을 가지는 객체들이 공유할 때가 있다면
+class Product {
+	static int count = 100;
+	int serialNo;
+	
+	public Product() {
+		serialNo = count++;
+		//serialNo = ++count;  // 101부터 카운트할 경우
+	}
+}
+public class ProductTest {
+
+	public static void main(String[] args) {
+		Product p1 = new Product();
+		Product p2 = new Product();
+		Product p3 = new Product();
+		
+		System.out.println(p1.serialNo);
+		System.out.println(p2.serialNo);
+		System.out.println(p3.serialNo);
+	}
+}
+```
+
+# 💡 상속 - 복습
+
+## 1. 상속의 정의
+
+- 상속은 기존의 클래스를 재사용하여 새로운 클래스를 작성하는 것
+- 상속을 하려면 `extends`를 쓴다.
+- 상속은 **단 하나만** 가능!!
+
+## 2. 클래스간의 관계
+
+### 상속관계
+
+- 공통되는 부분은 조상이 관리하고 개별적인 부분은 자손에서 관리
+- 조상이 변경되면 자손에 영향을 미치지만, 자손은 변경되어도 조상에 아무런 영향을 미치지 않는다.
+
+### 포함관계
+
+- **포함**이란?
+
+  👉 한 클래스의 멤버변수로 다른 클래스를 선언하는 것
+
+- 작은 단위의 클래스를 먼저 만들고 이들을 조합해서 하나의 커다란 클래스를 만들면 큰 클래스가 작은 클래스를 포함하는 관계가 된다.
+
+### 관계 결정하기
+
+- 가능한 한 많은 관계를 맺어주어 재사용성을 높이고 관리하기 쉽게 한다.
+- `is-a`와 `has-a`를 가지고 문장을 만들어 본다.
+- **Java는 단일상속만 허용한다.**
+
+## 3. 오버라이딩(Overriding)
+
+> 조상클래스에서 상속받은 메소드의 내용을 상속받는 클래스에 맞게 변경하는 것
+
+### 3-1. 오버라이딩의 조건
+
+- 선언부(이름, 매개변수, 리턴타입)가 같아야 한다.
+- 접근제어자를 더 좁은 범위로 변경할 수 없다.
+  - 예: 조상메소드가 `protected`일 때, 자식은 `protected` 또는 `public`으로만 변경 가능
+- 조상클래스의 메소드보다 많은 수의 예외를 선언할 수 없다.
+
+### 3-2. super 참조변수
+
+- `this`: 인스턴스 자신을 가리키는 참조변수
+- `super`: `this`와 같다. 부모 것을 가리키는 참조변수
+- `super()`: 조상의 생성자
+
+```java
+class Point {
+	int x, y;
+	Point() {}
+	Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	String getLocation() {
+		return "x: " + x + ", y: " + y;
+	}
+}
+class Point3D extends Point {
+	int z;
+	Point3D(int x, int y, int z) {
+		super(x, y);
+//		this.x = x;
+//		this.y = y;
+		this.z = z;
+	}
+	@Override
+	String getLocation() {
+		return super.getLocation() + ", z: " + z;  // 부모 것 + 자식 것
+	}
+}
+public class OverrideTest {
+	public static void main(String[] args) {
+		Point3D p1 = new Point3D(1,2,3);
+		System.out.println(p1.getLocation());
+
+	}
+}
+```
+
+## 4. 패키지
+
+> 클래스 모음집
+
+- 다른 패키지의 클래스를 사용하려면 다른 패키지를 `import`해야 한다.
+  - 자동 import 단축키: `ctrl + shift + o`
+- 다른 패키지의 함수를 사용하려면 getter와 setter를 이용
+  - Source ➡ Generate Getters and Setters
+- 패키지명은 보통 소문자로 명명한다.
+
+### 4-1. 패키지의 선언
+
+- 패키지는 소스파일에 첫 번째 문장(주석 제외)으로 선언
+- 패키지가 선언되지 않은 클래스는 자동으로 이름없는 패키지에 속한다.
+
+### 4-2. import문
+
+- 사용할 클래스가 속한 패키지를 지정할 때 사용
+- import문을 사용하면 클래스를 사용할 때 패키지명을 생략할 수 있다.
+- `java.lang`패키지의 클래스는 import 없이 사용 가능하다.
+
+### 4-3. import문의 선언
+
+- 패키지 내부에 다른 패키지가 있을 때 바깥 패키지를 import해도 내부 패키지까지 import되지는 않는다. import는 클래스만 가져오는 것이기 때문.
+- 이름이 같은 클래스가 속한 두 패키지를 import할 때는 클래스 앞에 패키지명을 붙여야 한다.
+
+```java
+package sec01.var.pac;
+
+public class PacClass {
+}
+```
+
+```java
+package sec01.var;  // 자바 파일 최상단에는 패키지 이름이 단 한 번만 선언된다
+
+import sec01.var.pac.PacClass;
+
+public class PacTest {
+	public static void main(String[] args) {
+		// sec01.var.pac.PacClass pc = new sec01.var.pac.PacClass();
+		PacClass pc = new PacClass();  // import를 통해 클래스만 사용가능
+	}
+}
+```
+
